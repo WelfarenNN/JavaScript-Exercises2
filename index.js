@@ -58,17 +58,22 @@ for (let i = 2; i <= evenMax; i = i + 2) {
 // TEST 3:  evenMax = 1   ->  (nothing printed)
 // ----- 4. Sum 1 to max -----
 // sumTotal = 0 before the loop. Add each number 1..`sumMax` to it. Log sumTotal.
-let sumMax = 100;
+let sumMax = 10;
 let sumTotal = 0;
-for (i = 1; i <= sumMax; i = i++) {}
+for (let i = 1; i <= sumMax; i++) {
+  sumTotal = sumTotal + i;
+}
+console.log(sumTotal);
 // your code here
 // TEST 1:  sumMax = 100  ->  5050
 // TEST 2:  sumMax = 10   ->  55
 // TEST 3:  sumMax = 1    ->  1
 // ----- 5. Times table -----
 // Log the `tableN` times table from "tableN x 1" to "tableN x 10", like "7 x 3 = 21".
-let tableN = 7;
-
+let tableN = 2;
+for (let i = 1; i <= 10; i++) {
+  console.log(tableN + "x" + i + "=" + tableN * i);
+}
 // your code here
 // TEST 1:  tableN = 7  ->  7 x 1 = 7  ...  7 x 10 = 70
 // TEST 2:  tableN = 2  ->  2 x 1 = 2  ...  2 x 10 = 20
@@ -76,23 +81,44 @@ let tableN = 7;
 // ----- 6. Factorial -----
 // Multiply 1*2*...*`factN` with an accumulator starting at 1. Log the result.
 let factN = 5;
+let total = 1;
+// your code here
+for (let i = 1; i <= factN; i++) {
+  total = total * i;
+}
+console.log(total);
 // your code here
 // TEST 1:  factN = 5  ->  120
 // TEST 2:  factN = 3  ->  6
 // TEST 3:  factN = 1  ->  1
 // ----- 7. Count multiples -----
 // Count how many numbers from 1 to `multMax` are divisible by 3 (i % 3 === 0). Log the count.
-// let multMax = 50;
-// for(let i=1; i<=multMax;i%3===0){
-//     console.log(i)
-// }
+let multMax = 10;
+let count = 0;
+for (let i = 1; i <= multMax; i++) {
+  if (i % 3 == 0) {
+    count++;
+  }
+}
+console.log(count);
 // your code here
 // TEST 1:  multMax = 50  ->  16
 // TEST 2:  multMax = 10  ->  3
 // TEST 3:  multMax = 2   ->  0
 // ----- 8. FizzBuzz (lite) -----
 // Loop 1 to `fizzMax`. Multiple of 3 -> "Fizz", of 5 -> "Buzz", both -> "FizzBuzz", else the number.
-let fizzMax = 20;
+let fizzMax = 3;
+for (let i = 1; i <= fizzMax; i++) {
+  if (i % 3 === 0) {
+    console.log("Fizz");
+  } else if (i % 5 === 0) {
+    console.log("Buzz");
+  } else if (i % 3 === 0 && i % 5 === 0) {
+    console.log("FizzBuzz");
+  } else {
+    console.log(i);
+  }
+}
 // your code here
 // TEST 1:  fizzMax = 5   ->  1 2 Fizz 4 Buzz
 // TEST 2:  fizzMax = 15  ->  1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz
@@ -102,21 +128,37 @@ let fizzMax = 20;
    ============================================================ */
 // ----- 9. Halve it -----
 // While halveN > 1, log halveN then halve it: halveN = Math.floor(halveN / 2).
-let halveN = 100;
+let halveN = 20;
+while (halveN > 1) {
+  console.log(halveN);
+  halveN = Math.floor(halveN / 2);
+}
 // your code here
 // TEST 1:  halveN = 100  ->  50 25 12 6 3 1
 // TEST 2:  halveN = 16   ->  8 4 2 1
 // TEST 3:  halveN = 1    ->  (nothing printed)
 // ----- 10. Count the digits -----
 // Using digitN = Math.floor(digitN / 10) in a while loop, count the digits. Log the count. (Pure math.)
-let digitN = 7384;
+let digitN = 501;
+let counter = 0;
+while (digitN > 0) {
+  digitN = Math.floor(digitN / 10);
+  counter++;
+}
+console.log(counter);
 // your code here
 // TEST 1:  digitN = 7384  ->  4
 // TEST 2:  digitN = 50    ->  2
 // TEST 3:  digitN = 9     ->  1
 // ----- 11. Sum of digits -----
 // Add last digit (sumDigitN % 10) to a total, then sumDigitN = Math.floor(sumDigitN / 10). While > 0. Log total.
-let sumDigitN = 1234;
+let sumDigitN = 5;
+let digittotaL = 0;
+while (sumDigitN > 0) {
+  digittotaL += sumDigitN % 10;
+  sumDigitN = Math.floor(sumDigitN / 10);
+}
+console.log(digittotaL);
 // your code here
 // TEST 1:  sumDigitN = 1234  ->  10
 // TEST 2:  sumDigitN = 999   ->  27
@@ -124,8 +166,13 @@ let sumDigitN = 1234;
 // ----- 12. Guess limiter -----
 // While guessNum !== secretNum, log "Trying " + guessNum, then guessNum++.
 // After the loop log "Found it: " + secretNum.
-let secretNum = 4;
+let secretNum = 1;
 let guessNum = 1;
+while (guessNum !== secretNum) {
+  console.log("Trying", guessNum);
+  guessNum++;
+}
+console.log("Found it", secretNum);
 // your code here
 // TEST 1:  secretNum = 4, guessNum = 1  ->  Trying 1 / Trying 2 / Trying 3, then  Found it: 4
 // TEST 2:  secretNum = 2, guessNum = 1  ->  Trying 1, then  Found it: 2
@@ -136,20 +183,37 @@ let guessNum = 1;
 // ----- 13. Spell it out -----
 // Loop with spellWord[i] and log one letter per line.
 let spellWord = "hello";
+for (let i = 0; i <= spellWord.length; i++) {
+  console.log(spellWord[i]);
+}
 // your code here
 // TEST 1:  spellWord = "hello"  ->  h e l l o
 // TEST 2:  spellWord = "hi"     ->  h i
 // TEST 3:  spellWord = "a"      ->  a
 // ----- 14. Count a letter -----
 // Count how many times "a" appears in letterWord (if letterWord[i] === "a"). Log the count.
-let letterWord = "banana";
+let letterWord = "dog";
+let counters = 0;
+for (let i = 0; i <= letterWord.length; i++) {
+  if (letterWord[i] === "a") {
+    counters = counters + 1;
+  }
+}
+console.log(counters);
 // your code here
 // TEST 1:  letterWord = "banana"  ->  3
 // TEST 2:  letterWord = "aaa"     ->  3
 // TEST 3:  letterWord = "dog"     ->  0
 // ----- 15. Count the vowels -----
 // For each char, if "aeiou".includes(vowelText[i]) add to a counter. Log the count.
-let vowelText = "javascript";
+let vowelText = "xyz";
+let counteR = 0;
+for (i = 0; i <= vowelText.length; i++) {
+  if ("aeiou".includes(vowelText[i])) {
+    counteR++;
+  }
+}
+console.log(counteR);
 // your code here
 // TEST 1:  vowelText = "javascript"  ->  3
 // TEST 2:  vowelText = "aeiou"       ->  5
@@ -157,6 +221,11 @@ let vowelText = "javascript";
 // ----- 16. Reverse a string -----
 // reversedText = "". Loop and build backwards: reversedText = reverseWord[i] + reversedText. Log it.
 let reverseWord = "code";
+let reversedText = "";
+for (i = 0; i <= reverseWord.length; i++) {
+  reversedText = reverseWord[i] + reversedText;
+}
+console.log(reversedText);
 // your code here
 // TEST 1:  reverseWord = "code"  ->  edoc
 // TEST 2:  reverseWord = "abc"   ->  cba
@@ -164,6 +233,13 @@ let reverseWord = "code";
 // ----- 17. Count the words -----
 // wordCount = 1. Each space (wordSentence[i] === " ") -> wordCount++. Log the count.
 let wordSentence = "the cat sat down";
+let wordCount = 1;
+for (i = 0; i < wordSentence.length; i++) {
+  if (wordSentence[i] === " ") {
+    wordCount++;
+  }
+}
+console.log(wordCount);
 // your code here
 // TEST 1:  wordSentence = "the cat sat down"  ->  4
 // TEST 2:  wordSentence = "hello world"       ->  2

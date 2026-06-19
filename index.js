@@ -251,6 +251,7 @@ console.log(wordCount);
 // Loop digitText chars. When !isNaN(Number(digitText[i])) -> log "First digit: " + char and break.
 // If none found, log "No digits".
 let digitText = "abc4def";
+secretNum;
 // your code here
 // TEST 1:  digitText = "abc4def"  ->  First digit: 4
 // TEST 2:  digitText = "a9b2"     ->  First digit: 9
